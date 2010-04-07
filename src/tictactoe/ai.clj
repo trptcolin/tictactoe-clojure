@@ -3,17 +3,20 @@
 
 (declare memoized-best-scored-board)
 
-(defn- make-scored-board [score move board]
-  {:score score :move move :board board})
+(defn- make-scored-board [score move]
+  {:score score :move move})
 
 (defn- score-board [board move mark depth]
   (let [next-board (assoc board move mark)]
     (cond
-      (= mark (winner next-board)) (make-scored-board (- 10 depth) move board)
-      (full? next-board) (make-scored-board 0 move board)
-      :else (make-scored-board (- (:score (memoized-best-scored-board next-board (next-mark mark) (inc depth))))
-                               move
-                               board))))
+      (= mark (winner next-board)) (make-scored-board (- 10 depth) move)
+      (full? next-board) (make-scored-board 0 move)
+      :else (make-scored-board
+              (- (:score (memoized-best-scored-board
+                            next-board
+                            (next-mark mark)
+                            (inc depth))))
+              move))))
 
 (defn- scored-board-compare [a b]
   (if (> (:score b) (:score a)) b a))

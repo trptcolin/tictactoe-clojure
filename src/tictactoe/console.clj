@@ -11,10 +11,7 @@
     (catch NumberFormatException e nil)))
 
 (def user-message println)
-(defn user-prompt [x]
-  (print x)
-  (flush))
-;;; helpers
+(defn user-prompt [x] (print x) (flush))
 
 (defn- console-suffix [x]
   (cond (> x 7) nil
@@ -79,10 +76,10 @@
     (user-message (instructions-str))
     (let [[player1 player2] (get-console-players)]
       (console-play (make-board) player1 player2)))
-  ([board player1 player2]
+  ([board current-player next-player]
     (if (game-over? board)
       (do
         (user-message "\n" (final-message (winner board)) "\n")
         (user-message (board-str board)))
       (recur
-        (get-valid-move board player1) player2 player1))))
+        (get-valid-move board current-player) next-player current-player))))
