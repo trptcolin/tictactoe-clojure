@@ -3,4 +3,4 @@ tictactoe-clojure
 
 Here's my Tic-Tac-Toe edition in Clojure. Any feedback is welcome.
 
-[@trptcoolin](http://twitter.com/trptcolin)
+[@trptcolin](http://twitter.com/trptcolin)
