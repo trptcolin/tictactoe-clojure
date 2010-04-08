@@ -1,5 +1,5 @@
 (ns tictactoe.ai
-  (:use tictactoe.core))
+  (:use [tictactoe.core :only [winner full? next-mark empty-squares]]))
 
 (declare memoized-best-scored-board)
 

@@ -1,5 +1,7 @@
-(ns tictactoe.core
-  (:use clojure.test tictactoe.core))
+(ns tictactoe.test_core
+  (:use
+    [clojure.test]
+    [tictactoe.core]))
 
 (deftest test-make-board
   (is (= [" " " " " "
@@ -67,13 +69,13 @@
   (is (= ["X" " " " "
           " " " " " "
           " " " " " "]
-         (place-on-board (make-board) 0 "X")))
+    (place-on-board (make-board) 0 "X")))
   (is (= [" " " " "O"
           "O" " " " "
           " " " " " "]
-         (place-on-board (place-on-board (make-board) 2 "O")
-                         3
-                         "O"))))
+    (place-on-board (place-on-board (make-board) 2 "O")
+      3
+      "O"))))
 
 (deftest test-next-mark
   (is (= "O" (next-mark "X")))
@@ -99,5 +101,3 @@
   (is (empty? (empty-squares ["X" "X" "X"
                               "X" "X" "X"
                               "X" "X" "X"]))))
-
-(run-tests)

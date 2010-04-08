@@ -1,5 +1,8 @@
-(ns tictactoe.ai
-  (:use clojure.test tictactoe.ai))
+(ns tictactoe.test_ai
+  (:use
+    [clojure.test]
+    [tictactoe.ai]
+    [tictactoe.core :only [make-board]]))
 
 (deftest test-computer-takes-immediate-win
   (are [move board] (= move (computer-mover board "X"))
@@ -39,5 +42,3 @@
 
 (deftest test-starting-move
   (is (= 0 (computer-mover (make-board) "X"))))
-
-(run-tests)

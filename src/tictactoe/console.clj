@@ -1,5 +1,7 @@
 (ns tictactoe.console
-  (:use tictactoe.core tictactoe.ai))
+  (:use
+    [tictactoe.core :only [valid-move? place-on-board make-board final-message game-over? winner]]
+    [tictactoe.ai :only [computer-mover]]))
 
 
 ;;; basic utility functions
